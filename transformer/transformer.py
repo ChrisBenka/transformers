@@ -16,8 +16,6 @@ class Transformer(nn.Module):
             num_decoder_layers=6,
             num_attention_heads=8,
             d_model=512,
-            encoder_ff_hidden_layers=2,
-            decoder_ff_hidden_layers=2,
             ff_hidden_units=2048,
             device=dev
     ):
@@ -28,7 +26,6 @@ class Transformer(nn.Module):
             num_encoder_layers,
             max_seq_len,
             num_attention_heads,
-            encoder_ff_hidden_layers,
             ff_hidden_units,
             device
         )
@@ -38,7 +35,6 @@ class Transformer(nn.Module):
             num_decoder_layers,
             max_seq_len,
             num_attention_heads,
-            decoder_ff_hidden_layers,
             ff_hidden_units,
             device
         )
@@ -47,4 +43,6 @@ class Transformer(nn.Module):
         src_mask = self.src_mask(src)
         target_mask = self.target_mask(target)
         encoded = self.encoder(src_mask, src)
-        return encoded
+        decoded = self.decoder(target,target_mask,encoded)
+        return decoded
+

@@ -14,13 +14,9 @@ pos is the position and is the dimension
 
 '''
 
-device = torch.device("cpu")
-
 class PositionalEncoding(nn.Module):
-
     def __init__(self, d_model: int, max_len: int = 5000):
         super().__init__()
-
         position = torch.arange(max_len).unsqueeze(1)
         div_term = torch.exp(torch.arange(0, d_model, 2) * (-math.log(10000.0) / d_model))
         pe = torch.zeros(max_len, 1, d_model)
@@ -36,6 +32,7 @@ class PositionalEncoding(nn.Module):
         x = x + self.pe[:x.size(0)]
         return self.dropout(x)
 
+
 if __name__ == '__main__':
-    pe = PositionalEncoding(5,10)
-    print(pe(torch.zeros((10,1,5)).to(device)))
+    pe = PositionalEncoding(5, 10)
+    print(pe(torch.zeros((10, 1, 5)).to(device)))

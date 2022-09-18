@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from torch import nn
-from layers.SelfAttention import SelfAttention
+from transformer.layers.SelfAttention import SelfAttention
 
 
 class MultiHeadAttention(nn.Module):

@@ -1,10 +1,10 @@
 import torch
 from torch import nn
-from layers.MultiHeadAttention import MultiHeadAttention
+from transformer.layers.MultiHeadAttention import MultiHeadAttention
 
 
 class DecoderBlock(nn.Module):
-    def __init__(self, d_model, heads, ff_hidden_units, device):
+    def __init__(self, d_model, heads, ff_hidden_units):
         super(DecoderBlock, self).__init__()
         self.multiHeadAttention1 = MultiHeadAttention(d_model,heads)
         self.norm1 = nn.LayerNorm(d_model)

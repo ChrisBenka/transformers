@@ -16,6 +16,8 @@ class Transformer(nn.Module):
             num_decoder_layers=6,
             num_attention_heads=8,
             d_model=512,
+            d_k = 64,
+            d_v = 64,
             ff_hidden_units=2048,
             device=dev
     ):
@@ -27,6 +29,8 @@ class Transformer(nn.Module):
             max_seq_len,
             num_attention_heads,
             ff_hidden_units,
+            d_k,
+            d_v,
             device
         )
         self.decoder = Decoder(
@@ -36,6 +40,8 @@ class Transformer(nn.Module):
             max_seq_len,
             num_attention_heads,
             ff_hidden_units,
+            d_k,
+            d_v,
             device
         )
 

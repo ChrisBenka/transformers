@@ -1,12 +1,12 @@
 import torch
 from torch import nn
-from attention import MultiHeadAttention
+from layers.MultiHeadAttention import MultiHeadAttention
 
 
 class EncoderBlock(nn.Module):
     def __init__(self, d_model, heads, ff_hidden_units, device):
         super(EncoderBlock, self).__init__()
-        self.multiHeadAttention = MultiHeadAttention()
+        self.multiHeadAttention = MultiHeadAttention(d_model,heads)
         self.norm1 = nn.LayerNorm(d_model)
         self.norm2 = nn.LayerNorm(d_model)
         self.fc = nn.Sequential(
